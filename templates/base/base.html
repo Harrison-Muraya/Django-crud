@@ -6,29 +6,40 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>My Blog</title>
 </head>
-<body class="bg-gray-100">
+<body >
+<section class="bg-teal-600 W-full p-x-0">
+    <!-- navbar -->
+    <nav class="relative container  mx-auto p-6 ">
+        <div class="flex items-center justify-between">
 
-    <!-- Header Section -->
-    <header class="bg-teal-600 text-white py-4 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <!-- Blog Title -->
-            <h1 class="text-3xl font-bold">
-                My Blog
-            </h1>
+            <div class="">
+                <a href="{% url 'post_list' %}" class="text-white text-lg hover:text-gray-200 transition-colors">Home</a>   
+            </div>
 
-            <!-- Navigation -->
-            <nav>
-                <a href="{% url 'post_list' %}" class="text-white text-lg hover:text-gray-200 transition-colors">
-                    Home
-                </a>
-            </nav>
+            <div class="text-white">
+                <a href="">HARRISON MURAYA</a>
+            </div>
+
+            <div class="space-x-6 md:flex text-white">
+                <a href="{% url 'register' %}">Register</a>
+                <a href="#">Login</a>
+
+            </div>
+
         </div>
-    </header>
 
-    <!-- Main Content Section -->
-    <main class="container mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
-        {% block content %}{% endblock %}
-    </main>
+     </nav>
+</section>
+
+    
+
+<!-- Main Content Section -->
+<main class="">
+    <div class="bg-teal-500 ">
+         {% block content %}{% endblock %}
+    </div>
+   
+</main>
 
 </body>
 </html>

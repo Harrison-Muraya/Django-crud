@@ -1,8 +1,8 @@
 {% extends 'base/base.html' %}
 {% block content %}
-<div class="min-h-screen bg-gray-100 flex flex-col items-center py-8">
+<div class="min-h-screen flex flex-col items-center py-8">
   <!-- Header -->
-  <h2 class="text-3xl font-bold text-green-700 mb-6">Blog Posts</h2>
+  <h2 class="text-3xl font-bold text-green-900 mb-6">Blog Posts</h2>
   
   <!-- Create New Post Button -->
   <div class="mb-6">
@@ -12,10 +12,10 @@
   </div>
 
   <!-- Posts List -->
-  <ul class="w-full max-w-2xl bg-white rounded-lg shadow-lg divide-y divide-gray-200">
+  <ul class="w-full max-w-2xl bg-teal-100 rounded-lg shadow-lg divide-y divide-gray-200">
     {% for post in posts %}
       <li class="p-4 flex justify-between items-center">
-        <a href="{% url 'post_detail' post.pk %}" class="text-lg font-semibold text-green-600 hover:text-green-800 transition-all">
+        <a href="{% url 'post_detail' post.pk %}" class="text-lg font-semibold text-green-700 hover:text-black transition-all">
           {{ post.title }}
         </a>
         <div class="flex space-x-4">

@@ -24,8 +24,8 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ['title', 'content', 'author']
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'w-full h-12 px-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600'}),
-            'content': forms.Textarea(attrs={'class': 'w-full h-32 px-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600'}),
+            'title': forms.TextInput(attrs={'class': 'w-full h-12 px-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 bg-teal-100'}),
+            'content': forms.Textarea(attrs={'class': 'w-full h-32 px-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 bg-teal-100'}),
         }
 
 

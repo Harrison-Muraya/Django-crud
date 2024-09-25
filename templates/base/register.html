@@ -14,8 +14,8 @@
 {% endif %}
 
 
-<div class="flex items-center justify-center h-screen bg-green-100">
-    <div class="w-full max-w-md mx-auto bg-white p-8 rounded-lg shadow-md grass-pattern">
+<div class="flex items-center justify-center h-screen ">
+    <div class="w-full max-w-md mx-auto bg-teal-100 p-4 rounded-lg shadow-md grass-pattern">
         <h2 class="text-3xl font-bold text-center text-green-700 mb-6">Register</h2>
         
         <form method="POST" action="">
@@ -26,7 +26,7 @@
                 <input type="text" id="firstname" name="firstname" 
                     class="peer bg-transparent h-12 w-full rounded-lg text-green-700 placeholder-transparent ring-2 px-2 pt-4 ring-green-500 focus:ring-green-800 focus:outline-none"
                     placeholder="First Name"/>
-                <label for="firstname" class="absolute left-2 -top-2.5 text-sm text-green-600 bg-white px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-green-700 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-green-800 peer-focus:text-sm transition-all">First Name</label>
+                <label for="firstname" class="absolute left-2 -top-2.5 text-sm text-green-600 bg-teal-100 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-green-700 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-green-800 peer-focus:text-sm transition-all">First Name</label>
             </div>
 
             <!-- Last Name -->
@@ -34,7 +34,7 @@
                 <input type="text" id="lastname" name="lastname" 
                     class="peer bg-transparent h-12 w-full rounded-lg text-green-700 placeholder-transparent ring-2 px-2 pt-4 ring-green-500 focus:ring-green-800 focus:outline-none"
                     placeholder="Last Name"/>
-                <label for="lastname" class="absolute left-2 -top-2.5 text-sm text-green-600 bg-white px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-green-700 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-green-800 peer-focus:text-sm transition-all">Last Name</label>
+                <label for="lastname" class="absolute left-2 -top-2.5 text-sm text-green-600 bg-teal-100 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-green-700 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-green-800 peer-focus:text-sm transition-all">Last Name</label>
             </div>
 
             <!-- Email -->
@@ -42,7 +42,7 @@
                 <input type="email" id="email" name="email" 
                     class="peer bg-transparent h-12 w-full rounded-lg text-green-700 placeholder-transparent ring-2 px-2 pt-4 ring-green-500 focus:ring-green-800 focus:outline-none"
                     placeholder="Email"/>
-                <label for="email" class="absolute left-2 -top-2.5 text-sm text-green-600 bg-white px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-green-700 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-green-800 peer-focus:text-sm transition-all">Email</label>
+                <label for="email" class="absolute left-2 -top-2.5 text-sm text-green-600 bg-teal-100 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-green-700 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-green-800 peer-focus:text-sm transition-all">Email</label>
             </div>
 
             <!-- Password -->
@@ -50,7 +50,7 @@
                 <input type="password" id="password" name="password" 
                     class="peer bg-transparent h-12 w-full rounded-lg text-green-700 placeholder-transparent ring-2 px-2 pt-4 ring-green-500 focus:ring-green-800 focus:outline-none"
                     placeholder="Password"/>
-                <label for="password" class="absolute left-2 -top-2.5 text-sm text-green-600 bg-white px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-green-700 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-green-800 peer-focus:text-sm transition-all">Password</label>
+                <label for="password" class="absolute left-2 -top-2.5 text-sm text-green-600 bg-teal-100 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-green-700 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-green-800 peer-focus:text-sm transition-all">Password</label>
             </div>
 
             <!-- Confirm Password -->
@@ -58,7 +58,7 @@
                 <input type="password" id="confirm_password" name="confirm_password" 
                     class="peer bg-transparent h-12 w-full rounded-lg text-green-700 placeholder-transparent ring-2 px-2 pt-4 ring-green-500 focus:ring-green-800 focus:outline-none"
                     placeholder="Confirm Password"/>
-                <label for="confirm_password" class="absolute left-2 -top-2.5 text-sm text-green-600 bg-white px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-green-700 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-green-800 peer-focus:text-sm transition-all">Confirm Password</label>
+                <label for="confirm_password" class="absolute left-2 -top-2.5 text-sm text-green-600 bg-teal-100 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-green-700 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-green-800 peer-focus:text-sm transition-all">Confirm Password</label>
             </div>
 
             <!-- Remember Me for 30 Days -->
@@ -87,15 +87,15 @@
 
             <!-- Social Sign In Options -->
             <div class="flex justify-center space-x-4">
-                <a href="#" class="bg-white border border-gray-300 shadow-sm p-3 rounded-lg flex items-center space-x-2 hover:bg-gray-50">
+                <a href="#" class="bg-teal-200 border border-transparent shadow-sm p-3 rounded-lg flex items-center space-x-2 hover:bg-teal-300">
                     <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Google" class="h-6 w-6">
                     <span>Google</span>
                 </a>
-                <a href="#" class="bg-white border border-gray-300 shadow-sm p-3 rounded-lg flex items-center space-x-2 hover:bg-gray-50">
+                <a href="#" class="bg-teal-200 border border-transparent shadow-sm p-3 rounded-lg flex items-center space-x-2 hover:bg-teal-300">
                     <img src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png" alt="Facebook" class="h-6 w-6">
                     <span>Facebook</span>
                 </a>
-                <a href="#" class="bg-white border border-gray-300 shadow-sm p-3 rounded-lg flex items-center space-x-2 hover:bg-gray-50">
+                <a href="#" class="bg-teal-200 border border-transparent shadow-sm p-3 rounded-lg flex items-center space-x-2 hover:bg-teal-300">
                     <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" class="h-6 w-6">
                     <span>GitHub</span>
                 </a>
