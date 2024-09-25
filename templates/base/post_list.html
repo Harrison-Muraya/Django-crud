@@ -1,14 +1,35 @@
 {% extends 'base/base.html' %}
 {% block content %}
-  <h2>Blog Posts</h2>
-  <a href="{% url 'create_post' %}">Create New Post</a>
-  <ul>
+<div class="min-h-screen bg-gray-100 flex flex-col items-center py-8">
+  <!-- Header -->
+  <h2 class="text-3xl font-bold text-green-700 mb-6">Blog Posts</h2>
+  
+  <!-- Create New Post Button -->
+  <div class="mb-6">
+    <a href="{% url 'create_post' %}" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-all">
+      Create New Post
+    </a>
+  </div>
+
+  <!-- Posts List -->
+  <ul class="w-full max-w-2xl bg-white rounded-lg shadow-lg divide-y divide-gray-200">
     {% for post in posts %}
-      <li>
-        <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a> 
-        | <a href="{% url 'update_post' post.pk %}">Edit</a>
-        | <a href="{% url 'delete_post' post.pk %}">Delete</a>
+      <li class="p-4 flex justify-between items-center">
+        <a href="{% url 'post_detail' post.pk %}" class="text-lg font-semibold text-green-600 hover:text-green-800 transition-all">
+          {{ post.title }}
+        </a>
+        <div class="flex space-x-4">
+          <a href="{% url 'update_post' post.pk %}" class="text-sm text-gray-600 hover:text-gray-800">
+            Edit
+          </a>
+          <a href="{% url 'delete_post' post.pk %}" class="text-sm text-red-600 hover:text-red-800">
+            Delete
+          </a>
+        </div>
       </li>
+    {% empty %}
+      <li class="p-4 text-gray-600">No posts available.</li>
     {% endfor %}
   </ul>
+</div>
 {% endblock %}

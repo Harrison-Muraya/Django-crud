@@ -1,9 +1,23 @@
 {% extends 'base/base.html' %}
 {% block content %}
-  <h2>Are you sure you want to delete "{{ post.title }}"?</h2>
-  <form method="POST">
-    {% csrf_token %}
-    <button type="submit">Confirm</button>
-  </form>
-  <a href="{% url 'post_list' %}">Cancel</a>
+<div class="min-h-screen bg-gray-100 flex items-center justify-center py-8">
+  <!-- Confirmation Container -->
+  <div class="w-full max-w-lg bg-white rounded-lg shadow-lg p-6 text-center">
+    <!-- Heading -->
+    <h2 class="text-2xl font-semibold text-red-600 mb-6">Are you sure you want to delete "{{ post.title }}"?</h2>
+
+    <!-- Form -->
+    <form method="POST" class="mb-6">
+      {% csrf_token %}
+      <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-all">
+        Confirm
+      </button>
+    </form>
+
+    <!-- Cancel Link -->
+    <a href="{% url 'post_list' %}" class="text-gray-600 hover:text-gray-800 underline">
+      Cancel
+    </a>
+  </div>
+</div>
 {% endblock %}

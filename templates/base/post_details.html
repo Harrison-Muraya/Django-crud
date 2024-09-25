@@ -1,7 +1,24 @@
 {% extends 'base/base.html' %}
 {% block content %}
-  <h2>{{ post.title }}</h2>
-  <p>{{ post.content }}</p>
-  <p><small>By {{ post.author }} on {{ post.created_at }}</small></p>
-  <a href="{% url 'post_list' %}">Back to Posts</a>
+<div class="min-h-screen bg-gray-100 flex flex-col items-center py-8">
+  <!-- Post Container -->
+  <div class="w-full max-w-2xl bg-white rounded-lg shadow-lg p-6">
+    <!-- Post Title -->
+    <h2 class="text-3xl font-bold text-green-700 mb-4">{{ post.title }}</h2>
+    
+    <!-- Post Content -->
+    <p class="text-lg text-gray-700 mb-6">{{ post.content }}</p>
+    
+    <!-- Post Meta Information -->
+    <p class="text-sm text-gray-500 mb-8">
+      By <span class="font-semibold">{{ post.author }}</span> 
+      on <span>{{ post.created_at }}</span>
+    </p>
+
+    <!-- Back to Posts Button -->
+    <a href="{% url 'post_list' %}" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-all">
+      Back to Posts
+    </a>
+  </div>
+</div>
 {% endblock %}

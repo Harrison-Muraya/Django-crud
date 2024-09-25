@@ -3,29 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>My Blog</title>
 </head>
-<body>
-    <header>
-        <h1>My Blog</h1>
-        <nav>
-            <a href="{% url 'post_list' %}">Home</a>
-        </nav>
+<body class="bg-gray-100">
+
+    <!-- Header Section -->
+    <header class="bg-teal-600 text-white py-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Blog Title -->
+            <h1 class="text-3xl font-bold">
+                My Blog
+            </h1>
+
+            <!-- Navigation -->
+            <nav>
+                <a href="{% url 'post_list' %}" class="text-white text-lg hover:text-gray-200 transition-colors">
+                    Home
+                </a>
+            </nav>
+        </div>
     </header>
-    <main>
+
+    <!-- Main Content Section -->
+    <main class="container mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
         {% block content %}{% endblock %}
     </main>
+
 </body>
 </html>
-<!-- <header>
-    <nav>
-        <a href="{% url 'post_list' %}">Home</a>
-        {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}">Logout</a>
-            <span>Welcome, {{ user.username }}</span>
-        {% else %}
-            <a href="{% url 'login' %}">Login</a>
-            <a href="{% url 'register' %}">Register</a>
-        {% endif %}
-    </nav>
-</header> -->

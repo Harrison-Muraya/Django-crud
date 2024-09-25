@@ -1,7 +1,8 @@
 from django.forms import ModelForm
-from .models import Users, Post
+from . models import Users, Post
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django import forms
-from .models import Post
 
 
 class UserForm(ModelForm):
@@ -22,3 +23,13 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'content', 'author']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'w-full h-12 px-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600'}),
+            'content': forms.Textarea(attrs={'class': 'w-full h-32 px-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600'}),
+        }
+
+
+class CreateUserForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
