@@ -1,11 +1,100 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<h2>Login</h2>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-</form>
-<a href="{% url 'register' %}">Don't have an account? Register here</a>
+
+
+
+<div class="flex items-center justify-center h-screen ">
+
+
+    <div class="w-full max-w-md mx-auto bg-teal-100 p-4 rounded-lg shadow-md grass-pattern">
+        {% if messages %}
+        <div class="mb-4 text-center" id="flash-messages">
+            {% for message in messages %}
+                <div class="bg-transparent text-red-700 px-4 py-2 rounded">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <h2 class="text-3xl font-bold text-center text-green-700 mb-6">Login</h2>
+        
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            <!-- User Name -->
+            <div class="relative mb-6">
+                <input type="text" id="firstname" name="username" 
+                    class="peer bg-transparent h-12 w-full rounded-lg text-green-700 placeholder-transparent ring-2 px-2 pt-4 ring-green-500 focus:ring-green-800 focus:outline-none"
+                    placeholder="Username"/>
+                <label for="firstname" class="absolute left-2 -top-2.5 text-sm text-green-600 bg-teal-100 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-green-700 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-green-800 peer-focus:text-sm transition-all">Username</label>
+            </div>
+
+            <!-- Last Name -->
+            <!-- <div class="relative mb-6">
+                <input type="text" id="lastname" name="lastname" 
+                    class="peer bg-transparent h-12 w-full rounded-lg text-green-700 placeholder-transparent ring-2 px-2 pt-4 ring-green-500 focus:ring-green-800 focus:outline-none"
+                    placeholder="Last Name"/>
+                <label for="lastname" class="absolute left-2 -top-2.5 text-sm text-green-600 bg-teal-100 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-green-700 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-green-800 peer-focus:text-sm transition-all">Last Name</label>
+            </div> -->
+
+            <!-- Email -->
+            <!-- <div class="relative mb-6">
+                <input type="email" id="email" name="email" 
+                    class="peer bg-transparent h-12 w-full rounded-lg text-green-700 placeholder-transparent ring-2 px-2 pt-4 ring-green-500 focus:ring-green-800 focus:outline-none"
+                    placeholder="Email"/>
+                <label for="email" class="absolute left-2 -top-2.5 text-sm text-green-600 bg-teal-100 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-green-700 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-green-800 peer-focus:text-sm transition-all">Email</label>
+            </div> -->
+
+            <!-- Password -->
+            <div class="relative mb-6">
+                <input type="password" id="password" name="password" 
+                    class="peer bg-transparent h-12 w-full rounded-lg text-green-700 placeholder-transparent ring-2 px-2 pt-4 ring-green-500 focus:ring-green-800 focus:outline-none"
+                    placeholder="Password"/>
+                <label for="password" class="absolute left-2 -top-2.5 text-sm text-green-600 bg-teal-100 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-green-700 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-green-800 peer-focus:text-sm transition-all">Password</label>
+            </div>
+
+            <!-- Remember Me for 30 Days -->
+            <div class="flex items-center mb-6">
+                <input type="checkbox" id="remember_me" name="remember_me" class="mr-2">
+                <label for="remember_me" class="text-green-700">Remember me for 30 days</label>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex justify-center">
+                <button type="submit" class="w-full h-12 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all">Login</button>
+            </div>
+
+            <!-- Login & Cancel Links -->
+            <div class="flex justify-between mt-4">
+                <a href="{% url 'register' %}" class="text-green-600 hover:underline">I Don't have an account? Register</a>
+                <a href="#" class="text-red-600 hover:underline">Cancel</a>
+            </div>
+
+            <!-- OR Divider -->
+            <div class="flex items-center my-4">
+                <hr class="w-full border-gray-300">
+                <span class="mx-4 text-gray-500">OR</span>
+                <hr class="w-full border-gray-300">
+            </div>
+
+            <!-- Social Sign In Options -->
+            <div class="flex justify-center space-x-4">
+                <a href="#" class="bg-teal-200 border border-transparent shadow-sm p-3 rounded-lg flex items-center space-x-2 hover:bg-teal-300">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Google" class="h-6 w-6">
+                    <span>Google</span>
+                </a>
+                <a href="#" class="bg-teal-200 border border-transparent shadow-sm p-3 rounded-lg flex items-center space-x-2 hover:bg-teal-300">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png" alt="Facebook" class="h-6 w-6">
+                    <span>Facebook</span>
+                </a>
+                <a href="#" class="bg-teal-200 border border-transparent shadow-sm p-3 rounded-lg flex items-center space-x-2 hover:bg-teal-300">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" class="h-6 w-6">
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
 {% endblock %}

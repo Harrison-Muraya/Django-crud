@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import login as auth_login, authenticate, logout as auth_logout
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -10,62 +10,72 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-def login(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
+def loginPage(request):
+    if request.user.is_authenticated:
+        return redirect('post_list')
+    else:
+        if request.method == "POST":
+            username = request.POST.get('username')
+            password = request.POST.get('password') 
+
+            user = authenticate(request, username=username, password=password)
             if user is not None:
-                auth_login(request, user)
+                login(request, user)
+                messages.success(request, 'You have logged In Welcome back')
                 return redirect('post_list')
             else:
-                messages.error(request, "Invalid username or password.")
-        else:
-            messages.error(request, "Invalid username or password.")
-    else:
-        form = AuthenticationForm()
-    return render(request, 'base/login.html', {'form': form})
+                messages.info(request, 'Username OR password is incorrect')
+
+        return render(request, 'base/login.html')
+
 # User logout view
-@login_required
-def logout(request):
-    auth_logout(request)
+
+def logoutUser(request):
+    logout(request)
     messages.info(request, "You have successfully logged out.")
-    return redirect('login')
+    return redirect('post_list')
 
 
 # User registration
 def register(request):
-    if request.method == 'POST':
-        firstname = request.POST['firstname']
-        lastname = request.POST['lastname']
-        email = request.POST['email']
-        password = request.POST['password']
-        confirm_password = request.POST['confirm_password']
+    if request.user.is_authenticated:
+        return redirect('post_list')
+    else:
+        if request.method == 'POST':
+            username = request.POST['username']
+            firstname = request.POST['firstname']
+            lastname = request.POST['lastname']
+            email = request.POST['email']
+            password = request.POST['password']
+            confirm_password = request.POST['confirm_password']
 
-        # validate password
-        if password != confirm_password:
-            messages.error(request, 'password do not match')
-            return redirect('base/register.html')
-        
-        # create user
-        user = User.objects.create_user(
-            username= firstname,
-            email=email,
-            first_name=firstname,
-            last_name=lastname,
-            password=password
-        )
+            # validate password
+            if password != confirm_password:
+                messages.error(request, 'password do not match')
+                return redirect('register')
+            
+            # Check if user with the same email already exists
+            # if User.objects.filter(email=email).exists():
+            #     messages.error(request, 'Email already in use')
+            #     return redirect('register')
+            
+            # create user
+            user = User.objects.create_user(
+                username= username,
+                email=email,
+                first_name=firstname,
+                last_name=lastname,
+                password=password
+            )
 
-         # Log the user in automatically after registration
-        auth_login(request, user)
-        messages.success(request, 'Registration successful!')
-        return redirect('post_list')  # Redirect to your post list or homepage after registration
+            # Log the user in automatically after registration
+            messages.success(request, 'Registration successful!')
+            return redirect('loginPage')  # Redirect to your post list or homepage after registration
 
 
-    return render(request, 'base/register.html')
-
+        return render(request, 'base/register.html')
+# create post
+@login_required(login_url='loginPage')
 def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
@@ -78,6 +88,7 @@ def create_post(request):
 
 
 # View a single post
+@login_required(login_url='loginPage')
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'base/post_details.html', {'post': post})
@@ -87,6 +98,7 @@ def post_list(request):
     return render(request, 'base/post_list.html', {'posts': posts})
 
 # Update post
+@login_required(login_url='loginPage')
 def update_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
@@ -99,6 +111,7 @@ def update_post(request, pk):
     return render(request, 'base/post_form.html', {'form': form})
 
 # Delete post
+@login_required(login_url='loginPage')
 def delete_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':

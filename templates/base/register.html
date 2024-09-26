@@ -4,13 +4,13 @@
 
 
 {% if messages %}
-    <div class="mb-4">
-        {% for message in messages %}
-            <div class="bg-red-100 text-red-700 px-4 py-2 rounded">
-                {{ message }}
-            </div>
-        {% endfor %}
-    </div>
+<div class="mb-4 text-center" id="flash-messages">
+    {% for message in messages %}
+        <div class="bg-transparent text-red-700 px-4 py-2 rounded">
+            {{ message }}
+        </div>
+    {% endfor %}
+</div>
 {% endif %}
 
 
@@ -20,6 +20,14 @@
         
         <form method="POST" action="">
             {% csrf_token %}
+
+             <!-- user Name -->
+             <div class="relative mb-6">
+                <input type="text" id="firstname" name="username" 
+                    class="peer bg-transparent h-12 w-full rounded-lg text-green-700 placeholder-transparent ring-2 px-2 pt-4 ring-green-500 focus:ring-green-800 focus:outline-none"
+                    placeholder="First Name"/>
+                <label for="firstname" class="absolute left-2 -top-2.5 text-sm text-green-600 bg-teal-100 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-green-700 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-green-800 peer-focus:text-sm transition-all">UserName</label>
+            </div>
 
             <!-- First Name -->
             <div class="relative mb-6">
@@ -74,7 +82,7 @@
 
             <!-- Login & Cancel Links -->
             <div class="flex justify-between mt-4">
-                <a href="#" class="text-green-600 hover:underline">Already have an account? Log in</a>
+                <a href="{% url 'loginPage' %}" class="text-green-600 hover:underline">Already have an account? Log in</a>
                 <a href="#" class="text-red-600 hover:underline">Cancel</a>
             </div>
 
