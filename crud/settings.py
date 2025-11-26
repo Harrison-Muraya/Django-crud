@@ -30,8 +30,8 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://django-crud.onrender.com',
-    'https://www.django-crud.onrender.com',
+    'https://*.onrender.com',
+    "http://*.onrender.com",
 ]
 
 
